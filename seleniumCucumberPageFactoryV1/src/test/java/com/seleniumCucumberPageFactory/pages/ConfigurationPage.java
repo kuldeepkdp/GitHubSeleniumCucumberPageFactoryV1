@@ -19,7 +19,8 @@ public class ConfigurationPage {
 			PageFactory.initElements(driver, this);
 		}
 		
-		//This page is for Cx civica Project testing 2
+		//Updated featureBranchName1
+		//made some changes on featureBranchName1
 		//Companies 
 		@FindBy(how=How.CSS, using="#search-Company-text") public WebElement searchCompanyTextBox ;
 		@FindBy(how=How.CSS, using="ul[id=treeview-CompanyResult]") public WebElement companyResult ;
