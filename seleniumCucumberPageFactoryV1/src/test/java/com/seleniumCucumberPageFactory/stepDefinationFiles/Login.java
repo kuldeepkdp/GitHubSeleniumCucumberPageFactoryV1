@@ -32,12 +32,12 @@ public class Login {
 	@Given("^i login as \"([^\"]*)\" using passowrd \"([^\"]*)\"$")
 	public void i_login_as_using_passowrd(String userName, String password) throws Throwable {
 		
-		/*
+		
 		CommonUtils.explicitWait(driver, loginPage.userName);
 		loginPage.userName.sendKeys(CommonFunction.GetData(userName));
 		loginPage.password.sendKeys(CommonFunction.GetData(password));
 		loginPage.login.click();
-	    */
+	    
 		
 		System.out.println("User logged in successfully");
 	}

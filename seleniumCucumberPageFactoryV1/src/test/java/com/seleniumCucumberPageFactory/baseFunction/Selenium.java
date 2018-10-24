@@ -3,10 +3,14 @@ package com.seleniumCucumberPageFactory.baseFunction;
 
 import java.io.IOException;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
@@ -52,7 +56,13 @@ public class Selenium {
 	}
 
 	@After
-	public void afterScenario() {
+	public void afterScenario(Scenario scenario) {
+		
+		if (scenario.isFailed()) {
+		      // Take a screenshot...
+		      final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+		      scenario.embed(screenshot, "image/png"); // ... and embed it in the report.
+		    }
 		
 		driver.quit();
 		System.out.println("Exectuing After Statement");

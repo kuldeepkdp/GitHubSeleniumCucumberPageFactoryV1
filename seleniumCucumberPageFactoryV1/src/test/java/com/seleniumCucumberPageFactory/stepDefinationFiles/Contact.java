@@ -42,7 +42,7 @@ public class Contact {
 		
 		CommonUtils.explicitWait(driver, contactPage.validationMessage);
 		String actulavalidation = contactPage.validationMessage.getText();
-		Assert.assertEquals("Checking mandatory field validation", expectedValidation, actulavalidation);
+		Assert.assertEquals("Checking mandatory field validation123", expectedValidation, actulavalidation);
 	}
 	
 	@Given("^I fill the contact form$")
