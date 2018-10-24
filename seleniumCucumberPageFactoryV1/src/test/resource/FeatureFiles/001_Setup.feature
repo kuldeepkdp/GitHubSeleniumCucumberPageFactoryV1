@@ -1,4 +1,4 @@
-@InActiveFeature
+@ActiveFeature
 Feature: This feature file cover scenario related to set up
 
   @Active
