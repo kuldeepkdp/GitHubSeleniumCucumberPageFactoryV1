@@ -1,6 +1,7 @@
 package com.seleniumCucumberPageFactory.stepDefinationFiles;
 
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -44,25 +45,37 @@ public class Registration {
 	
 	@Given("^i fill the registration form$")
 	public void i_fill_the_registration_form(DataTable table) throws Throwable {
+				
+		Map<String, String> data = table.asMap(String.class, String.class);	
 		
-		List<List<String>> data= table.raw();
-		
-		registrationPage.fname.sendKeys(data.get(1).get(0));
-		registrationPage.lname.sendKeys(data.get(1).get(1));
+		registrationPage.fname.sendKeys(data.get("First Name"));
+		registrationPage.lname.sendKeys(data.get("Last Name"));
 		registrationPage.mstatus.click();
 		registrationPage.hobby.click();
 		registrationPage.country.click();
 		registrationPage.dm.click();
 		registrationPage.dd.click();
 		registrationPage.dy.click();
-		registrationPage.ph.sendKeys(data.get(1).get(2));
+		registrationPage.ph.sendKeys(data.get("Phone Number"));
 		registrationPage.uname.sendKeys(CommonFunction.generateString(8));
 		registrationPage.email.sendKeys(CommonFunction.generateString(6)+"@gmail.com");
 		registrationPage.about.sendKeys(
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ");
-		registrationPage.pw.sendKeys(data.get(1).get(3));
-		registrationPage.cpw.sendKeys(data.get(1).get(4));
+		registrationPage.pw.sendKeys(data.get("Password"));
+		registrationPage.cpw.sendKeys(data.get("Confirm Password"));
 	
+	}
+	
+	@Given("^i fill the registration form with below details$")
+	public void i_fill_the_registration_form_with_below_details(DataTable table) throws Throwable {
+		
+		Map<String, String> m = table.asMap(String.class, String.class);	
+		System.out.println("First name is " + m.get("First Name"));
+		System.out.println("Last name is " + m.get("Last Name"));
+		System.out.println("Phone number is " + m.get("Phone Number"));
+		System.out.println("Password is " + m.get("Password"));
+		System.out.println("Last name is " + m.get("Confirm Password"));
+
 	}
 	
 	@Then("^I got registration success message$")
